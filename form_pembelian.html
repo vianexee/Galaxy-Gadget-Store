@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pembelian</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .product {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+        }
+        .form-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Produk Handphone</h1>
+    <div id="products">
+        <div class="product" data-name="IPHONE 12" data-price="8999000">
+            <h3>IPHONE 12</h3>
+            <p>Harga: Rp 8.999.000</p>
+            <button onclick="openForm(this)">Beli Sekarang</button>
+        </div>
+        <div class="product" data-name="IPHONE XR" data-price="5999000">
+            <h3>IPHONE XR</h3>
+            <p>Harga: Rp 5.999.000</p>
+            <button onclick="openForm(this)">Beli Sekarang</button>
+        </div>
+        <!-- Tambahkan produk lainnya sesuai kebutuhan -->
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeForm()"></div>
+
+    <div class="form-container" id="formContainer">
+        <h2>Form Pembelian</h2>
+        <form id="purchaseForm">
+            <p>Nama Produk: <span id="productName"></span></p>
+            <p>Harga: Rp <span id="productPrice"></span></p>
+            <label for="buyerName">Nama Pembeli:</label>
+            <input type="text" id="buyerName" required><br><br>
+            <label for="buyerAddress">Alamat:</label>
+            <textarea id="buyerAddress" required></textarea><br><br>
+            <button type="button" onclick="addToOrders()">Tambahkan ke Pesanan</button>
+            <button type="button" onclick="closeForm()">Batal</button>
+        </form>
+    </div>
+
+    <h2>Daftar Pesanan</h2>
+    <ul id="orderList"></ul>
+
+    <script>
+        function openForm(button) {
+            const product = button.parentElement;
+            const name = product.getAttribute('data-name');
+            const price = product.getAttribute('data-price');
+
+            document.getElementById('productName').innerText = name;
+            document.getElementById('productPrice').innerText = price;
+
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('formContainer').style.display = 'block';
+        }
+
+        function closeForm() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'none';
+        }
+
+        function addToOrders() {
+            const name = document.getElementById('productName').innerText;
+            const price = document.getElementById('productPrice').innerText;
+            const buyerName = document.getElementById('buyerName').value;
+            const buyerAddress = document.getElementById('buyerAddress').value;
+
+            if (!buyerName || !buyerAddress) {
+                alert('Harap lengkapi semua informasi pembelian!');
+                return;
+            }
+
+            const orderList = document.getElementById('orderList');
+            const li = document.createElement('li');
+            li.innerText = `Nama: ${buyerName}, Alamat: ${buyerAddress}, Produk: ${name}, Harga: Rp ${price}`;
+            orderList.appendChild(li);
+
+            closeForm();
+            document.getElementById('purchaseForm').reset();
+        }
+    </script>
+</body>
+</html>

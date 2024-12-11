@@ -1,0 +1,137 @@
+body {
+    background-color: whitesmoke;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-size: 1800px;
+    background-position: center;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+h1 {
+    color: #333;
+    text-decoration: solid;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    color: black;
+    text-decoration: black;
+    margin: 10px 15px;
+   
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: transparent;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 5px 0;
+}
+
+form input, form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: skyblue;
+}
+
+.produk-list {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+.produk-item, .aksesoris-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    width: calc(20% - 40px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+
+
+}
+ .produk-iphone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+ }
+
+ .aksesoris-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+ }
+
+ #header-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    filter: brightness(100%);
+
+ }
+
+ div button {
+    background-color: aquamarine;
+
+ }
+
+ div button:hover {
+    background-color: skyblue;
+    
+ }
